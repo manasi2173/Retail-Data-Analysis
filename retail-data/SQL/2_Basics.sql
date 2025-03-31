@@ -132,3 +132,7 @@ JOIN product p
 ON td.product_id = p.product_id
 GROUP BY p.product_id, YEAR(td.tran_dt)
 ORDER BY p.product_id, year;
+
+
+
+SELECT tran_dt, DAY(tran_dt) AS date FROM tran_hdr;

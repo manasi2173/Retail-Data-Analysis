@@ -50,8 +50,8 @@ SELECT * FROM tran_dtl;
 SELECT * FROM tran_hdr;
 SELECT * FROM tran_dtl ORDER BY tran_dt DESC;
 SELECT * FROM tran_hdr ORDER BY tran_dt DESC;
-SELECT * FROM tran_dtl WHERE tran_dt = '2025-03-25';
-SELECT * FROM tran_hdr WHERE tran_dt = '2025-03-25';
+SELECT * FROM tran_dtl WHERE tran_dt = CURRENT_DATE();
+SELECT * FROM tran_hdr WHERE tran_dt = CURRENT_DATE();
 
 
 
@@ -61,8 +61,5 @@ SELECT * FROM tran_hdr WHERE tran_dt = '2025-03-25';
 SHOW CREATE TABLE tran_dtl;
 SHOW TABLES;
 
-
-
-
-
+DESC tran_dtl;
  

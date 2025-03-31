@@ -70,9 +70,5 @@ ORDER BY member_id;
 
 
 
--- by member by product -> query only
--- member_trip_count table
--- last one year -> curr_dt-1 year 
-
 
 -- update trip count table daily
