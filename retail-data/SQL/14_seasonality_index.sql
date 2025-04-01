@@ -56,7 +56,7 @@ AverageMonthlySales AS (
 )
 SELECT ms.*,
 	   ams.avg_monthly_sale,
-       (ms.monthly_sale/ams.avg_monthly_sale) * 100 AS seasonality_index
+       ROUND((ms.monthly_sale/ams.avg_monthly_sale), 2) AS seasonality_index
 FROM MonthlySales ms
 JOIN AverageMonthlySales ams
 ON ms.product_id = ams.product_id
