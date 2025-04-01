@@ -12,7 +12,8 @@ CREATE TABLE rolling_member_trip_count (
 
 
 DELETE FROM rolling_member_trip_count 
-WHERE tran_dt < DATE_SUB(CURDATE(), INTERVAL 365 DAY);
+WHERE tran_dt < DATE_SUB(CURDATE(), INTERVAL 365 DAY)
+	  OR tran_dt > CURDATE();
 
 
 INSERT INTO rolling_member_trip_count (member_id, tran_dt, trip_count) 
@@ -21,15 +22,17 @@ SELECT
     tran_dt,
     COUNT(DISTINCT tran_id) AS trip_count
 FROM tran_hdr
-WHERE tran_dt >= DATE_SUB(CURDATE(), INTERVAL 365 DAY)
+WHERE tran_dt BETWEEN DATE_SUB(CURDATE(), INTERVAL 365 DAY) AND CURDATE()
 GROUP BY member_id, tran_dt
 ON DUPLICATE KEY UPDATE trip_count = VALUES(trip_count);
 
 
 
-SELECT * FROM rolling_member_trip_count
-WHERE trip_count > 1
-ORDER BY tran_dt ASC;
+SELECT * FROM rolling_member_trip_count ORDER BY tran_dt;
+
+-- SELECT * FROM rolling_member_trip_count
+-- WHERE trip_count > 1
+-- ORDER BY tran_dt ASC;
 
 
 

@@ -61,3 +61,10 @@ FROM MonthlySales ms
 JOIN AverageMonthlySales ams
 ON ms.product_id = ams.product_id
 ORDER BY ms.product_id, ms.year, ms.month;
+
+
+
+
+
+
+SELECT * FROM tran_hdr WHERE member_id = 1175 AND tran_dt = '2025-02-03';
